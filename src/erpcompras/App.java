@@ -7,11 +7,6 @@ import erpcompras.modelos.Producto;
 import erpcompras.modelos.Proveedor;
 import erpcompras.modelos.SolicitudCompra;
 
-import erpcompras.modelos.*;
-import erpcompras.interfaces.*;
-
-import java.util.stream.Collectors;
-
 public class App {
     static Scanner scanner = new Scanner(System.in);
     static List<Proveedor> proveedores = new ArrayList<>();
@@ -21,7 +16,7 @@ public class App {
     public static void main(String[] args) {
         int opcion;
         do {
-            System.out.println("\n===== SISTEMA DE GESTIÓN DE COMPRAS ERP =====");
+            System.out.println("\n===== SISTEMA DE GESTION DE COMPRAS ERP =====");
             System.out.println("1. Registrar proveedor");
             System.out.println("2. Registrar producto");
             System.out.println("3. Registrar solicitud de compra");
@@ -30,11 +25,11 @@ public class App {
             System.out.println("6. Listar solicitudes de compra");
             System.out.println("7. Buscar proveedor por ID");
             System.out.println("8. Buscar producto por nombre");
-            System.out.println("9. Buscar solicitud por número");
+            System.out.println("9. Buscar solicitud por numero");
             System.out.println("13. Aprobar / Rechazar solicitud de compra");
             System.out.println("14. Calcular total de una solicitud");
             System.out.println("15. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
             opcion = scanner.nextInt();
             scanner.nextLine();
 
@@ -76,7 +71,7 @@ public class App {
                     System.out.println("Saliendo...");
                     break;
                 default:
-                    System.out.println("Opción inválida.");
+                    System.out.println("Opcion invalida.");
                     break;
         }
 
@@ -103,9 +98,9 @@ public class App {
     }
 
     static void registrarSolicitud() {
-        System.out.print("Número de solicitud: ");
-        String numero = scanner.nextLine();
-        SolicitudCompra solicitud = new SolicitudCompra(numero);
+        System.out.print("Numero de solicitud: ");
+        int numSolicitud = Integer.parseInt(scanner.nextLine());
+        SolicitudCompra solicitud = new SolicitudCompra(numSolicitud);
         while (true) {
             System.out.print("Producto (nombre o 'fin'): ");
             String nombre = scanner.nextLine();
@@ -119,7 +114,7 @@ public class App {
             System.out.print("Cantidad: ");
             int cantidad = scanner.nextInt();
             scanner.nextLine();
-            solicitud.agregarProducto(p, cantidad);
+            solicitud.agregarItem(p, cantidad);
         }
         solicitudes.add(solicitud);
     }
@@ -141,18 +136,18 @@ public class App {
     }
 
     static void buscarSolicitud() {
-        System.out.print("Número: ");
+        System.out.print("Numero: ");
         String numero = scanner.nextLine();
         solicitudes.stream()
-            .filter(s -> s.getNumero().equalsIgnoreCase(numero))
+            .filter(s -> s.getNumero() == Integer.parseInt(numero))
             .forEach(System.out::println);
     }
 
     static void cambiarEstado() {
-        System.out.print("Número de solicitud: ");
+        System.out.print("Numero de solicitud: ");
         String numero = scanner.nextLine();
         SolicitudCompra solicitud = solicitudes.stream()
-            .filter(s -> s.getNumero().equalsIgnoreCase(numero)).findFirst().orElse(null);
+            .filter(s -> s.getNumero() == Integer.parseInt(numero)).findFirst().orElse(null);
         if (solicitud == null) {
             System.out.println("No encontrada.");
             return;
@@ -163,7 +158,7 @@ public class App {
     }
 
     static void calcularTotal() {
-        System.out.print("Número de solicitud: ");
+        System.out.print("Numero de solicitud: ");
         int numero = scanner.nextInt();
         solicitudes.stream()
             .filter(s -> s.getNumero() == numero)
