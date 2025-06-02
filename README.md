@@ -23,12 +23,14 @@ El proyecto **ERPCompras** es un sistema de gestión de compras desarrollado en 
             Proveedor.java
             SolicitudCompra.java
             EstadoSolicitud.java
+            Persona.java
+            SolicitudCompra.java
          interfaces/
             Calculable.java
    ```
 
 2. **Declaración de paquetes**
-   Cada archivo `.java` debe contener en la primera línea la declaración correspondiente a su paquete:
+   Cada archivo `.java` contiene en la primera línea la declaración correspondiente a su paquete:
 
    * Archivos en `src/erpcompras`:
      `package erpcompras;`
@@ -50,7 +52,7 @@ El proyecto **ERPCompras** es un sistema de gestión de compras desarrollado en 
    Desde la misma carpeta `src`, ejecute el programa con:
 
    ```
-   java erpcompras.App
+   java -cp bin erpcompras.App
    ```
 
 5. **Requisitos**
