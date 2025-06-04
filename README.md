@@ -41,16 +41,16 @@ El proyecto **ERPCompras** es un sistema de gestión de compras desarrollado en 
 
 3. **Compilación**
    Abra una terminal y Luego ejecute:
-   Este codigo compila Calculable.java
+   * Este codigo compila Calculable.java
 
    ```
    javac -d bin src/erpcompras/interfaces/Calculable.java
    ```
-   Compila modelos asegurando que Calculable ya existe
+   * Compila modelos asegurando que Calculable ya existe
    ```
    javac -cp bin -d bin src/erpcompras/modelos/*.java
    ```
-   Compila App.java despues de los paquetes
+   * Compila App.java despues de los paquetes
    ```
    javac -cp bin -d bin src/erpcompras/App.java
    ```
