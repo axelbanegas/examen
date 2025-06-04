@@ -40,16 +40,25 @@ El proyecto **ERPCompras** es un sistema de gestión de compras desarrollado en 
      `package erpcompras.interfaces;`
 
 3. **Compilación**
-   Abra una terminal y navegue hasta la carpeta `src` (raíz del código fuente). Luego ejecute:
+   Abra una terminal y Luego ejecute:
+   Este codigo compila Calculable.java
 
    ```
-   javac erpcompras/*.java erpcompras/modelos/*.java erpcompras/interfaces/*.java
+   javac -d bin src/erpcompras/interfaces/Calculable.java
+   ```
+   Compila modelos asegurando que Calculable ya existe
+   ```
+   javac -cp bin -d bin src/erpcompras/modelos/*.java
+   ```
+   Compila App.java despues de los paquetes
+   ```
+   javac -cp bin -d bin src/erpcompras/App.java
    ```
 
    Esto compilará todos los archivos `.java` y generará los `.class`.
 
 4. **Ejecución**
-   Desde la misma carpeta `src`, ejecute el programa con:
+   Desde el mismo terminal, ejecute el programa con:
 
    ```
    java -cp bin erpcompras.App

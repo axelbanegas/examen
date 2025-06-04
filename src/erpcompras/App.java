@@ -73,7 +73,7 @@ public class App {
                 default:
                     System.out.println("Opcion invalida.");
                     break;
-        }
+            }
 
         } while (opcion != 15);
     }
@@ -100,6 +100,13 @@ public class App {
     static void registrarSolicitud() {
         System.out.print("Numero de solicitud: ");
         int numSolicitud = Integer.parseInt(scanner.nextLine());
+
+        boolean existe = solicitudes.stream().anyMatch(s -> s.getNumero() == numSolicitud);
+        if (existe) {
+            System.out.println("Ya existe una solicitud con ese numero.");
+            return;
+        }
+
         SolicitudCompra solicitud = new SolicitudCompra(numSolicitud);
         while (true) {
             System.out.print("Producto (nombre o 'fin'): ");
@@ -163,6 +170,5 @@ public class App {
         solicitudes.stream()
             .filter(s -> s.getNumero() == numero)
             .forEach(s -> System.out.println("Total: $" + s.calcularTotal()));
-
     }
 }
